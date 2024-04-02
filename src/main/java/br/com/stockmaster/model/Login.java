@@ -4,23 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 @Entity
-
-public class Categoria {
+public class Login{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id_login;
 
-    @NotBlank(message = "Nome é obrigatório")
-    @Size(min = 3, max= 255, message = "Nome deve ter pelo menos 3 caracteres")
-    private String nome;
+    @Email
+    @NotBlank(message = "Email é obrigatório")
+    private String email;
 
-    @NotNull
-    private String icone;
-
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min = 8, max = 255, message = "Senha deve ter pelo menos 8 caracteres")
+    private String senha;
 }
